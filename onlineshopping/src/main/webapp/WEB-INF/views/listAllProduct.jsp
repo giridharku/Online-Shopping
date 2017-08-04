@@ -1,0 +1,45 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<div class="container">
+
+	<div class="row">
+
+		<!-- Include category.jsp -->
+		<div class="col-md-3">
+			<%@include file="category.jsp"%>
+		</div>
+
+		<!-- Display Actual products -->
+		<div class="col-md-9">
+
+			<!-- Adding bootstrap Bread crum for Navigation -->
+			<div class="row">
+
+				<div class="col-lg-12">
+
+					<!-- User has clicked all prodcuts   -->
+					<c:if test="${userClickedAllProduct==true}">
+						<ol class="breadcrumb">
+							<li><a href="${contextRoot}/home">Home</a></li>
+							<li class="active">All Products</li>
+						</ol>
+					</c:if>
+
+					<!-- User has clicked category all prodcuts   -->
+					<c:if test="${userClickedCategoryProduct==true}">
+						<ol class="breadcrumb">
+							<li><a href="${contextRoot}/home">Home</a></li>
+							<li class="active">Category</li>
+							<li class="active">${category.name}</li>
+						</ol>
+					</c:if>
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+</div>

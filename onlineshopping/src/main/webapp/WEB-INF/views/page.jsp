@@ -39,6 +39,7 @@
 	<div class="wrapper">
 		<script type="text/javascript">
 			window.menu = '${title}';
+			console.log(window.menu);
 		</script>
 
 		<!-- Navigator comes here -->
@@ -63,6 +64,11 @@
 			<!-- Display contact only if user has clicked on contact page -->
 			<c:if test="${userClickedContact==true}">
 				<%@ include file="contact.jsp"%>
+			</c:if>
+			
+			<!-- Display all product only if user has clicked on all products or category product -->
+			<c:if test="${userClickedAllProduct==true or userClickedCategoryProduct==true}">
+				<%@ include file="listAllProduct.jsp"%>
 			</c:if>
 		</div>
 		<!-- Footer comes here -->
