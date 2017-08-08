@@ -1,14 +1,38 @@
 package net.giri.onlineshoppingbackend.dto;
 
-public class Category {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Category")
+public class Category implements java.io.Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
     private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String description;
 
+    @Column(name = "image_url")
     private String imgUrl;
 
+    @Override
+    public String toString() {
+	return "Category [name=" + name + ", id=" + id + ", description=" + description + ", imgUrl=" + imgUrl
+		+ ", active=" + active + "]";
+    }
+
+    @Column(name = "is_active")
     private boolean active = true;
 
     public String getName() {

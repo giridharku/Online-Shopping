@@ -3,55 +3,83 @@ package net.giri.onlineshoppingbackend.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
 import net.giri.onlineshoppingbackend.dao.CategoryDao;
 import net.giri.onlineshoppingbackend.dto.Category;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 @Repository("categoryDao")
+@Transactional
 public class CategoryDaoImpl implements CategoryDao {
 
+    @Autowired
+    private SessionFactory sessionFactory;
     private static List<Category> categoryList = new ArrayList<Category>();
     static {
 
 	Category category = new Category();
 	category.setId(123);
-	category.setName("Mobile");
-	category.setDescription("You can find all mobiles");
-	category.setImgUrl("Img.png");
-	category.setActive(true);
-	categoryList.add(category);
-	category = new Category();
-	category.setId(1423);
-	category.setName("Laptops");
-	category.setDescription("You can find all Laptops");
-	category.setImgUrl("Img.png");
-	category.setActive(true);
-	categoryList.add(category);
-	category = new Category();
-	category.setId(14273);
-	category.setName("Television");
-	category.setDescription("You can find all Tv");
-	category.setImgUrl("Img.png");
-	category.setActive(true);
 	categoryList.add(category);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Category> getAllCategory() {
-	return categoryList;
+	String selectActiveCategory = "FROM Category";
+	List<Category> list = sessionFactory.getCurrentSession().createQuery(selectActiveCategory).list();	
+	return list;
     }
 
     @Override
-    public Category get(int id) {
+    public Category get(long id) {
 
-	for (Category category : categoryList) {
-
-	    if (id == category.getId()) {
-		return category;
-	    }
+	Category category = null;
+	try {
+	    category = (Category) sessionFactory.getCurrentSession().get(Category.class, id);
+	} catch (Exception ex) {
+	    ex.printStackTrace();
 	}
-	return null;
+	return category;
     }
 
+    @Override
+    public boolean add(Category category) {
+	try {
+	    sessionFactory.getCurrentSession().persist(category);
+	} catch (Exception ex) {
+	    ex.printStackTrace();
+	    return false;
+
+	}
+	return true;
+    }
+
+    @Override
+    public boolean update(Category category) {
+	try {
+	    sessionFactory.getCurrentSession().update(category);
+	} catch (Exception ex) {
+	    ex.printStackTrace();
+	    return false;
+
+	}
+	return true;
+    }
+
+    @Override
+    public boolean remove(long id) {
+	try {
+	    Session session = sessionFactory.getCurrentSession();
+	    Category category = (Category) session.get(Category.class, id);
+	    category.setActive(false);
+	    session.update(category);
+	} catch (Exception ex) {
+	    ex.printStackTrace();
+	}
+	return true;
+    }
 }

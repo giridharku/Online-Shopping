@@ -5,9 +5,16 @@ import java.util.List;
 import net.giri.onlineshoppingbackend.dto.Category;
 
 public interface CategoryDao {
+
+    public List<Category> getAllCategory();
+
+    public Category get(long id);
+
+    public boolean add(Category category);
     
-    public List<Category>getAllCategory();
+    public boolean update(Category category);
     
-    public Category get(int id);
+    public boolean remove(long id);
+
 
 }
