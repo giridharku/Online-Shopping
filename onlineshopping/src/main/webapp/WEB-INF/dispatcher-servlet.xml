@@ -11,7 +11,7 @@
          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="net.giri.onlineshopping.controller" />
-	<context:component-scan base-package="net.giri.onlineshoppingbackend.daoimpl" />
+	<context:component-scan base-package="net.giri.onlineshoppingbackend" />
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

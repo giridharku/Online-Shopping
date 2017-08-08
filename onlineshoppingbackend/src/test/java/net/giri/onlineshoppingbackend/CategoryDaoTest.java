@@ -1,4 +1,4 @@
-package net.giri.onlineshoppingbackend.test;
+package net.giri.onlineshoppingbackend;
 
 import java.util.List;
 
