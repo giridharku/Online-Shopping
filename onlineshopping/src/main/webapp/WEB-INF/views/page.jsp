@@ -29,6 +29,12 @@
 <!-- bootstrap theme CSS -->
 <link href="${css}/bootstrap-redable-theme.css" rel="stylesheet">
 
+<!-- jQuery Dataatable bootstrap theme CSS -->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
+
+
+
+
 
 
 
@@ -39,7 +45,7 @@
 	<div class="wrapper">
 		<script type="text/javascript">
 			window.menu = '${title}';
-			console.log(window.menu);
+			window.contextRoot = '${contextRoot}';
 		</script>
 
 		<!-- Navigator comes here -->
@@ -65,9 +71,10 @@
 			<c:if test="${userClickedContact==true}">
 				<%@ include file="contact.jsp"%>
 			</c:if>
-			
+
 			<!-- Display all product only if user has clicked on all products or category product -->
-			<c:if test="${userClickedAllProduct==true or userClickedCategoryProduct==true}">
+			<c:if
+				test="${userClickedAllProduct==true or userClickedCategoryProduct==true}">
 				<%@ include file="listAllProduct.jsp"%>
 			</c:if>
 		</div>
@@ -80,6 +87,16 @@
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="${js}/bootstrap.min.js"></script>
+
+
+		<!-- J Query Datatables JavaScript -->
+		<script src="${js}/jquery.dataTables.js"></script>
+
+		<!-- J Query Datatables JavaScript -->
+		<script src="${js}/dataTables.bootstrap.js"></script>
+
+
+
 
 
 		<!-- My App  JavaScript -->

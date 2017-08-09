@@ -43,28 +43,29 @@ category_id INT,
 supplier_id INT,
 purchases INT default 0,
 views INT default 0,
+quantity INT,
 CONSTRAINT pk_product_id PRIMARY KEY (id),
 CONSTRAINT pk_product_category_id FOREIGN  KEY (category_id) REFERENCES category(id),
 CONSTRAINT pk_product_supplier_id FOREIGN  KEY (supplier_id) REFERENCES user_detail(id)
 );
 
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('iPhone5s','ABCD3ED','Apple','best phone','38000',true,1,2,30,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('Apple iPhone5s','ABCD3ED','Apple','best phone','38000',true,1,2,30,50,20);
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('Motorola','WER3ED','Motorola','best phone','28000',true,1,3,30,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('Motorola','WER3ED','Motorola','best phone','28000',true,1,3,30,50,30);
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('Explorer','EXPLD3ED','HTC','best phone','8000',true,1,2,30,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('HTC Desire 630','EXPLD3ED','HTC','best phone','8000',true,1,2,30,50,10);
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('redmiPrime','REDBCD3ED','Redmi','best phone','18000',true,1,3,50,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('Redmi Note 4','REDBCD3ED','Redmi','best phone','18000',true,1,3,50,50,200);
 
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('LgCRT','LGCD3ED','Lg','best TV','38000',true,3,2,30,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('LG 80cm (32) HD Ready LED Smart TV','LGCD3ED','Lg','best TV','38000',true,3,2,30,50,34);
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('Samung LCD','SAMER3ED','Samsung','best Tv','28000',true,3,3,30,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('Samsung 80cm (32) HD Ready LED TV','SAMER3ED','Samsung','best Tv','28000',true,3,3,30,50,43);
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('Sony Tv','SONYLD3ED','SONY','Sony tv','80000',true,3,2,30,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('Sony Bravia 80cm (32) HD Ready LED Smart TV','SONYLD3ED','SONY','Sony tv','80000',true,3,2,30,50,30);
 
-insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views) values('SmartTv','DEEDBCD3ED','VEDIOCON','Vediocon','8000',true,3,3,50,50);
+insert into product(name,code,brand,description,unit_price,is_active,category_id,supplier_id,purchases,views,quantity) values('Videocon 55cm (22) HD Ready LED TV','DEEDBCD3ED','VEDIOCON','Vediocon','8000',true,3,3,50,50,10);
 
 
 

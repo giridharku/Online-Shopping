@@ -1,6 +1,5 @@
 package net.giri.onlineshoppingbackend.daoimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.giri.onlineshoppingbackend.dao.CategoryDao;
@@ -18,13 +17,7 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Autowired
     private SessionFactory sessionFactory;
-    private static List<Category> categoryList = new ArrayList<Category>();
-    static {
-
-	Category category = new Category();
-	category.setId(123);
-	categoryList.add(category);
-    }
+   
 
     @SuppressWarnings("unchecked")
     @Override

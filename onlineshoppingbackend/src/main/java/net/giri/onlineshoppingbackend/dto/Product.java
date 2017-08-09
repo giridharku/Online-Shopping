@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
@@ -16,6 +18,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String code;
+    @JsonIgnore
     private String description;
     private String brand;
     private int views;
@@ -25,72 +28,113 @@ public class Product {
     @Column(name = "is_active")
     private boolean active;
     @Column(name = "category_id")
+    @JsonIgnore
     private int categoryId;
-    public int getId() {
-        return id;
+    private int quantity;
+    @Column(name = "supplier_id")
+    @JsonIgnore
+    private int supplierId;
+
+    private String name;
+
+    public String getName() {
+	return name;
     }
-    
-    public Product(){
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public int getQuantity() {
+	return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+	this.quantity = quantity;
+    }
+
+    public int getId() {
+	return id;
+    }
+
+    public Product() {
 	this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
     }
+
     public void setId(int id) {
-        this.id = id;
+	this.id = id;
     }
+
     public String getCode() {
-        return code;
+	return code;
     }
+
     public void setCode(String code) {
-        this.code = code;
+	this.code = code;
     }
+
     public String getDescription() {
-        return description;
+	return description;
     }
+
     public void setDescription(String description) {
-        this.description = description;
+	this.description = description;
     }
+
     public String getBrand() {
-        return brand;
+	return brand;
     }
+
     public void setBrand(String brand) {
-        this.brand = brand;
+	this.brand = brand;
     }
+
     public int getViews() {
-        return views;
+	return views;
     }
+
     public void setViews(int views) {
-        this.views = views;
+	this.views = views;
     }
+
     public int getPurchases() {
-        return purchases;
+	return purchases;
     }
+
     public void setPurchases(int purchases) {
-        this.purchases = purchases;
+	this.purchases = purchases;
     }
+
     public double getUnitPrice() {
-        return unitPrice;
+	return unitPrice;
     }
+
     public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
+	this.unitPrice = unitPrice;
     }
+
     public boolean isActive() {
-        return active;
+	return active;
     }
+
     public void setActive(boolean active) {
-        this.active = active;
+	this.active = active;
     }
+
     public int getCategoryId() {
-        return categoryId;
+	return categoryId;
     }
+
     public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+	this.categoryId = categoryId;
     }
+
     public int getSupplierId() {
-        return supplierId;
+	return supplierId;
     }
+
     public void setSupplierId(int supplierId) {
-        this.supplierId = supplierId;
+	this.supplierId = supplierId;
     }
-    @Column(name = "supplier_id")
-    private int supplierId;
 
 }

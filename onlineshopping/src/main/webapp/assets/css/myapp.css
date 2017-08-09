@@ -60,17 +60,20 @@ footer {
 /* Custom Styling*/
 .content {
 	padding-bottom: 60px;
-	
 }
 
 .wrapper {
 	min-height: 100%;
 	position: relative;
-	
 }
 
 .footer {
 	position: absolute;
 	bottom: 15px;
+	height: 60px;
+}
+
+.dataTableImg {
+	width: 60px;
 	height: 60px;
 }
