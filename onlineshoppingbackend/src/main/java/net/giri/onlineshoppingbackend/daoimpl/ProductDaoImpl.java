@@ -43,7 +43,12 @@ public class ProductDaoImpl implements ProductDao {
      */
     @Override
     public Product get(int id) {
-	Product product = (Product) sessionFactory.getCurrentSession().load(Product.class, id);
+	Product product = null;
+	try {
+	    product = (Product) sessionFactory.getCurrentSession().get(Product.class, id);
+	} catch (Exception ex) {
+	    ex.printStackTrace();
+	}
 	return product;
     }
 

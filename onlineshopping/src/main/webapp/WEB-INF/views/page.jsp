@@ -77,6 +77,12 @@
 				test="${userClickedAllProduct==true or userClickedCategoryProduct==true}">
 				<%@ include file="listAllProduct.jsp"%>
 			</c:if>
+			
+			<!-- Display product details only if user has clicked view product -->
+			<c:if
+				test="${userClickedViewProduct==true}">
+				<%@ include file="productDetails.jsp"%>
+			</c:if>
 		</div>
 		<!-- Footer comes here -->
 		<%@ include file="./shared/footer.jsp"%>

@@ -1,7 +1,9 @@
 package net.giri.onlineshopping.controller;
 
 import net.giri.onlineshoppingbackend.dao.CategoryDao;
+import net.giri.onlineshoppingbackend.dao.ProductDao;
 import net.giri.onlineshoppingbackend.dto.Category;
+import net.giri.onlineshoppingbackend.dto.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ public class PageController {
 
     @Autowired
     private CategoryDao categoryDao;
+
+    @Autowired
+    private ProductDao productDao;
 
     @RequestMapping(value = { "/", "/home", "/index" })
     public ModelAndView index() {
@@ -66,4 +71,18 @@ public class PageController {
 
     }
 
+    @RequestMapping("/show/{id}/product")
+    public ModelAndView getProductDetails(@PathVariable("id") int productId) {
+	Product product = productDao.get(productId);
+
+	ModelAndView model = new ModelAndView("page");
+	model.addObject("title", product.getName());
+	model.addObject("userClickedViewProduct", true);
+	model.addObject("product", product);
+	// increment number of views
+	product.setViews(product.getViews() + 1);
+	productDao.update(product);
+	return model;
+
+    }
 }

@@ -50,13 +50,15 @@ $(function() {
 
 							{
 								data : 'code',
+								bSortable : false,
 								mRender : function(data, type, row) {
 
 									return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpeg" class = "dataTableImg"/>';
 								}
 							},
 							{
-								data : 'name'
+								data : 'name',
+								"width": "20%"
 							},
 
 							{
@@ -87,11 +89,8 @@ $(function() {
 											+ window.contextRoot
 											+ '/show/'
 											+ data
-											+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &#160;';
-									str += '<a href="'
-											+ window.contextRoot
-											+ '/cart/add'
-											+ data
+											+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a>&#160; ';
+									str += '<a href="'	+ window.contextRoot + '/cart/add/'	+ data
 											+ '/product"class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
 									return str;
 								}
