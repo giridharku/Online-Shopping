@@ -1,5 +1,6 @@
 package net.giri.onlineshopping.controller;
 
+import net.giri.onlineshopping.exception.ProductNotFoundException;
 import net.giri.onlineshoppingbackend.dao.CategoryDao;
 import net.giri.onlineshoppingbackend.dao.ProductDao;
 import net.giri.onlineshoppingbackend.dto.Category;
@@ -72,8 +73,13 @@ public class PageController {
     }
 
     @RequestMapping("/show/{id}/product")
-    public ModelAndView getProductDetails(@PathVariable("id") int productId) {
+    public ModelAndView getProductDetails(@PathVariable("id") int productId) throws ProductNotFoundException {
 	Product product = productDao.get(productId);
+
+	if (null == product) {
+
+	    throw new ProductNotFoundException("The product you are looking for is not available");
+	}
 
 	ModelAndView model = new ModelAndView("page");
 	model.addObject("title", product.getName());
