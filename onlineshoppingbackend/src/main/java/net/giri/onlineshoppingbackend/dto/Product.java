@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,11 +24,14 @@ public class Product {
     private int id;
     private String code;
     @JsonIgnore
+    @NotEmpty(message = "Please provide description")
     private String description;
+    @NotEmpty(message = "Please provide brand")
     private String brand;
     private int views;
     private int purchases;
     @Column(name = "unit_price")
+    @Min(value = 1, message = "Pirce can't be less than 1")
     private double unitPrice;
     @Column(name = "is_active")
     private boolean active;
@@ -34,8 +42,18 @@ public class Product {
     @Column(name = "supplier_id")
     @JsonIgnore
     private int supplierId;
-
+    @NotEmpty(message = "Please provide product name")
     private String name;
+    @Transient
+    private MultipartFile file;
+
+    public MultipartFile getFile() {
+	return file;
+    }
+
+    public void setFile(MultipartFile file) {
+	this.file = file;
+    }
 
     public String getName() {
 	return name;
